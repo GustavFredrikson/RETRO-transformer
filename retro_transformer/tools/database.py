@@ -135,7 +135,7 @@ def build_database(workspace: str = './workspace', file_name: str = 'text.txt', 
     with console.status("Save"):
         faiss.write_index(index, f'{workspace}/retro.index')
         console.log("Save index")
-    
+
     return dataset.n_tokens
 
 
@@ -171,7 +171,7 @@ class RetroIndex:
     def filter_neighbors(self, offset: int, neighbor_offsets: List[int]):
         """
         #### Filter neighbors that overlap with the query
-        
+
         The positions of the neighbors are given by `neighbor_offsets` and the position
         of the query chunk is `offset`.
         """
@@ -185,6 +185,7 @@ class RetroIndex:
         """
 
         # Get $\text{B\small{ERT}}(N)$ of query chunks
+        print(self.bert)
         emb = self.bert(query_chunks).cpu()
 
         # Get `n_neighbors + n_extra` nearest neighbors from the database
