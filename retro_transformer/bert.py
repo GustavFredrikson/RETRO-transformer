@@ -50,7 +50,6 @@ class BERTForChunkEmbeddings:
         # Break words
         parts = stripped.split()
         # Remove first and last pieces
-        print(stripped, parts)
         stripped = stripped[len(parts[0]):-len(parts[-1])]
 
         # Remove whitespace
