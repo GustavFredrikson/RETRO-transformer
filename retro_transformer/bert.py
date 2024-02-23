@@ -46,6 +46,7 @@ class BERTForChunkEmbeddings:
         As mentioned earlier this is not necessary if we broke chunks after tokenizing.
         """
         # Strip whitespace
+        print("chunk: ", chunk)
         stripped = chunk.strip()
         # Break words
         parts = stripped.split()
