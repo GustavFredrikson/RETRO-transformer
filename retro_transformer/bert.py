@@ -1,4 +1,6 @@
 from typing import List
+
+from huggingface_hub.hf_api import struct
 from rich.console import Console
 
 import torch
@@ -48,6 +50,7 @@ class BERTForChunkEmbeddings:
         # Break words
         parts = stripped.split()
         # Remove first and last pieces
+        print(stripped, parts)
         stripped = stripped[len(parts[0]):-len(parts[-1])]
 
         # Remove whitespace
