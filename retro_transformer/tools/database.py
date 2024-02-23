@@ -189,7 +189,10 @@ class RetroIndex:
             emb = self.bert(query_chunks).cpu()
         except Exception as e:
             # Print all variables
-            print(locals())
+            print(self.bert)
+            print(query_chunks)
+            print(offsets)
+            print(self)
             raise e
 
         # Get `n_neighbors + n_extra` nearest neighbors from the database
