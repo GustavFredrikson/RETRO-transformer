@@ -45,14 +45,11 @@ class BERTForChunkEmbeddings:
         We strip them off to get better BERT embeddings.
         As mentioned earlier this is not necessary if we broke chunks after tokenizing.
         """
+        print("chunk", chunk)
         # Strip whitespace
-        print("chunk: ", chunk)
         stripped = chunk.strip()
         # Break words
         parts = stripped.split()
-        # Remove first and last
-        print("bert1: ", stripped)
-        print("bert: ", parts)
         stripped = stripped[len(parts[0]):-len(parts[-1])]
 
         # Remove whitespace
