@@ -185,7 +185,6 @@ class RetroIndex:
         """
 
         # Get $\text{B\small{ERT}}(N)$ of query chunks
-        print(self.bert)
         emb = self.bert(query_chunks).cpu()
 
         # Get `n_neighbors + n_extra` nearest neighbors from the database
