@@ -185,7 +185,12 @@ class RetroIndex:
         """
 
         # Get $\text{B\small{ERT}}(N)$ of query chunks
-        emb = self.bert(query_chunks).cpu()
+        try:
+            emb = self.bert(query_chunks).cpu()
+        except Exception as e:
+            # Print all variables
+            print(locals())
+            raise e
 
         # Get `n_neighbors + n_extra` nearest neighbors from the database
         distance, neighbor_offsets = self.index.search(emb.numpy(), self.n_neighbors + self.n_extra)
