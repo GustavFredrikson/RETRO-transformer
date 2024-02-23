@@ -461,7 +461,20 @@ class RetroModel(nn.Module):
         self.encoder = encoder
 
         # Token embedding layer
-        self.emb = nn.Embedding(n_vocab, d_model)
+        try:
+            self.emb = nn.Embedding(n_vocab, d_model)
+        except Exception as e:
+            print(e)
+            print("v_vocab", n_vocab)
+            print("d_model", d_model)
+            print("n_layers", n_layers)
+            print("ca_layers", ca_layers)
+            print("chunk_len", chunk_len)
+            print("n_heads", n_heads)
+            print("d_k", d_k)
+            print("d_ff", d_ff)
+            print("encoder", encoder)
+            raise e
         # Chunked cross attention layers $\text{C\small{CA}}$
         self.cca = nn.ModuleList(
             [ChunkedCrossAttention(d_model, n_heads, d_k, chunk_len) for _ in range(len(ca_layers))])
